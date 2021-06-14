@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { InstitutionDTO, StudentDTO } from './institution.dto';
 import { InstitutionService } from './institution.service';
 
@@ -19,5 +19,10 @@ export class InstitutionController {
   @Post('/student')
   async createStudent(@Body() student: StudentDTO) {
     return this.institution.createStudent(student);
+  }
+
+  @Delete('/student')
+  async deleteStudent(@Query('ra') ra: string) {
+    return this.institution.deleteStudent(ra);
   }
 }
